@@ -1,9 +1,14 @@
-import { findProductById } from "./productData.mjs";
+import { findProductById } from './productData.mjs';
+import { getParam } from './utils.mjs';
+import productDetails from './productDetails.mjs';
+
+const productId = getParam('product');
+productDetails(productId);
 
 function addProductToCart(product) {
-  let existingItems = JSON.parse(localStorage.getItem("so-cart")) || [];
+  let existingItems = JSON.parse(localStorage.getItem('so-cart')) || [];
   existingItems.push(product);
-  localStorage.setItem("so-cart", JSON.stringify(existingItems));
+  localStorage.setItem('so-cart', JSON.stringify(existingItems));
 }
 // add to cart button event handler
 async function addToCartHandler(e) {
@@ -13,5 +18,5 @@ async function addToCartHandler(e) {
 
 // add listener to Add to Cart button
 document
-  .getElementById("addToCart")
-  .addEventListener("click", addToCartHandler);
+  .getElementById('addToCart')
+  .addEventListener('click', addToCartHandler);
