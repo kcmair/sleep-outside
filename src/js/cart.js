@@ -1,5 +1,7 @@
 import { getLocalStorage } from './utils.mjs';
+import { loadHeaderFooter } from './utils.mjs';
 
+loadHeaderFooter();
 function renderCartContents() {
   let cartItems = getLocalStorage('so-cart') || [];
   if (!Array.isArray(cartItems)) {
