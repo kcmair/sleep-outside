@@ -1,3 +1,9 @@
 import productList from './productList.mjs';
+import { loadHeaderFooter } from './utils.mjs';
 
-productList('.product-list', 'tents');
+async function init() {
+  await loadHeaderFooter();
+  productList('.product-list', 'tents');
+}
+
+init();
