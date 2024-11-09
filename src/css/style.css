@@ -122,6 +122,26 @@ button {
 .products {
   padding: 0.5em;
 }
+.product-grid {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0;
+  align-items: flex-end; /* Aligns items to bottom */
+  gap: 1rem; /* Creates consistent spacing */
+}
+.product-grid .product-card {
+  flex: 1 1 15%;
+  max-width: 160px;
+  border: 0;
+  white-space: nowrap;
+  text-align: center;
+}
+.product-grid .product-card img {
+  width: 120px;
+  height: 120px;
+}
 .product-list {
   display: flex;
   flex-flow: row wrap;

@@ -22,10 +22,10 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener('click', callback);
 }
 
-export function getParam() {
+export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  return urlParams.get('product');
+  return urlParams.get(param);
 }
 
 export function renderListWithTemplate(
@@ -69,11 +69,11 @@ function loadTemplate(path) {
   };
 }
 
-export function loadHeaderFooter() {
-  const headerTemplate = loadTemplate('./partials/header.html')();
-  const footerTemplate = loadTemplate('./partials/footer.html')();
+export async function loadHeaderFooter() {
+  const headerTemplate = await loadTemplate('./partials/header.html')();
+  const footerTemplate = await loadTemplate('./partials/footer.html')();
   const headerEl = document.querySelector('#main-header');
   const footerEl = document.querySelector('#main-footer');
-  renderWithTemplate(headerTemplate, headerEl);
-  renderWithTemplate(footerTemplate, footerEl);
+  renderWithTemplate(() => headerTemplate, headerEl);
+  renderWithTemplate(() => footerTemplate, footerEl);
 }
