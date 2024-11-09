@@ -69,11 +69,11 @@ function loadTemplate(path) {
   };
 }
 
-export async function loadHeaderFooter() {
-  const headerTemplate = await loadTemplate('./partials/header.html')();
-  const footerTemplate = await loadTemplate('./partials/footer.html')();
+export function loadHeaderFooter() {
+  const headerTemplate = loadTemplate('./partials/header.html')();
+  const footerTemplate = loadTemplate('./partials/footer.html')();
   const headerEl = document.querySelector('#main-header');
   const footerEl = document.querySelector('#main-footer');
-  renderWithTemplate(() => headerTemplate, headerEl);
-  renderWithTemplate(() => footerTemplate, footerEl);
+  renderWithTemplate(headerTemplate, headerEl);
+  renderWithTemplate(footerTemplate, footerEl);
 }
