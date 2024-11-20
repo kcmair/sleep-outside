@@ -1,4 +1,5 @@
-import { getLocalStorage } from './utils.mjs';
+import { getLocalStorage, alertMessage, removeAllAlerts } from './utils.mjs';
+import { checkout } from './externalServices.mjs';
 
 function calculateItemTotal(cartItems) {
   return cartItems.reduce((total, item) => {
@@ -53,10 +54,12 @@ export default function checkoutProcess() {
 
   document.querySelector('form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const success = await submitOrder(e.target);
-    if (success) {
+    const message = await submitOrder(e.target);
+    if (message === 'Order Placed') {
       localStorage.removeItem('so-cart');
       location.href = '/checkout/success.html';
+    } else {
+      alertMessage(message);
     }
   });
 }
@@ -94,16 +97,13 @@ async function submitOrder(form) {
     tax: tax.toFixed(2),
   };
 
-  const response = await fetch(
-    'http://server-nodejs.cit.byui.edu:3000/checkout',
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(order),
+  try {
+    const response = await checkout(order);
+    return response.message;
+  } catch (error) {
+    removeAllAlerts();
+    for (let message in error.message) {
+      alertMessage(error.message[message]);
     }
-  );
-
-  return response.ok;
+  }
 }
