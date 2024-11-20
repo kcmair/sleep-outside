@@ -76,8 +76,8 @@ export function updateCartCount(count) {
 }
 
 export async function loadHeaderFooter() {
-  const headerTemplate = await loadTemplate('../partials/header.html')();
-  const footerTemplate = await loadTemplate('../partials/footer.html')();
+  const headerTemplate = await loadTemplate('/partials/header.html')();
+  const footerTemplate = await loadTemplate('/partials/footer.html')();
   const headerEl = document.querySelector('#main-header');
   const footerEl = document.querySelector('#main-footer');
   const cartItems = getLocalStorage('so-cart') || [];
