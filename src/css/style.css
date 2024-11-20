@@ -410,3 +410,16 @@ legend {
 .cart-count[data-count="0"] {
   display: none;
 }
+
+.alert {
+  max-width: 600px;
+  padding: 0 6rem;
+  background-color: #f8d7da;
+  margin: .5rem auto;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  left: 50%;
+}
+
