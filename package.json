@@ -1,5 +1,6 @@
 {
   "name": "outside",
+  "type": "module",
   "version": "3.0.0",
   "description": "Boilerplate for WDD 330 SleepOutside project",
   "main": "main.js",
