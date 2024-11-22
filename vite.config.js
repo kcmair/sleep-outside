@@ -1,11 +1,12 @@
 import { resolve } from 'path';
 // eslint-disable-next-line import/namespace
 import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+
 export default defineConfig({
   root: 'src/',
-
   build: {
-    outDir: '/dist',
+    outDir: '../dist',
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'src/index.html'),
@@ -19,4 +20,14 @@ export default defineConfig({
       },
     },
   },
+  plugins: [
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'src/partials', // Path to the source directory
+          dest: 'partials', // Path to the destination in `dist`
+        },
+      ],
+    }),
+  ],
 });
