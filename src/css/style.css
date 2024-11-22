@@ -423,3 +423,17 @@ legend {
   left: 50%;
 }
 
+.order-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 0.5rem;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.order-grid.header {
+  font-weight: bold;
+  background-color: #f5f5f5;
+}
+
