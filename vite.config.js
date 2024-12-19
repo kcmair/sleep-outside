@@ -1,9 +1,10 @@
 import { resolve } from 'path';
 // eslint-disable-next-line import/namespace
 import { defineConfig } from 'vite';
+
 export default defineConfig({
   root: 'src/',
-
+  publicDir: 'src/public/',
   build: {
     outDir: '../dist',
     rollupOptions: {
